@@ -1,0 +1,13 @@
+Id=Id
+Subject=主題
+Supporter=サポーター
+Content=コンテンツ
+CreateTask=タスク新規作成
+UpdateTask=タスク編集
+DeleteTask=タスク削除
+GetTasks=タスク一覧
+GetTask=タスク詳細
+
+CreateTaskError=メッセージ作成エラーが発生しました。
+UpdateTaskError=メッセージ更新エラーが発生しました。
+DeleteTaskError=メッセージ作成エラーが発生しました。
