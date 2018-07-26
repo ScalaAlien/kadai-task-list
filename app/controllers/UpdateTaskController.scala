@@ -19,7 +19,7 @@ class UpdateTaskController @Inject()(components: ControllerComponents)
   def index(TaskId: Long): Action[AnyContent] = Action { implicit request =>
     val result = Task.findById(TaskId).get
     val filledForm = form.fill(
-      TaskForm(result.id, result.subject, result.supporter, result.content))
+      TaskForm(result.id, result.status.getOrElse(""),result.subject, result.supporter, result.content))
     Ok(views.html.edit(filledForm))
   }
 
@@ -33,6 +33,7 @@ class UpdateTaskController @Inject()(components: ControllerComponents)
           val result = Task
             .updateById(model.id.get)
             .withAttributes(
+              'status -> model.status,
               'subject     -> model.subject,
               'supporter     -> model.supporter,
               'content     -> model.content,

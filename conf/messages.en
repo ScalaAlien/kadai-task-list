@@ -1,8 +1,8 @@
 Id=Id
+Status=status
 Subject=Subject
 Supporter=Supporter
 Content=Content
-
 CreateTask=Create Task
 UpdateTask=Edit Task
 DeleteTask=Delete Task

@@ -8,6 +8,7 @@
         <thead>
         <tr>
             <th>id</th>
+            <th>@Messages("Status")</th>
             <th>@Messages("Subject")</th>
             <th>@Messages("Supporter")</th>
             <th>@Messages("Content")</th>
@@ -17,6 +18,7 @@
         @for(task <- taskSeq) {
         <tr>
             <td><a href="@routes.GetTaskController.index(task.id.get)">@task.id.get</a></td>
+            <td>@task.status</td>
             <td>@task.subject</td>
             <td>@task.supporter</td>
             <td>@task.content</td>

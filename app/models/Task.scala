@@ -8,7 +8,7 @@ import skinny.orm._
 /**
   * Task
   */
-case class Task(id: Option[Long], subject: String, supporter: String, content: String, createAt: ZonedDateTime, updateAt: ZonedDateTime)
+case class Task(id: Option[Long], status: Option[String], subject: String, supporter: String, content: String, createAt: ZonedDateTime, updateAt: ZonedDateTime)
 
 object Task extends SkinnyCRUDMapper[Task] {
 
@@ -19,6 +19,7 @@ object Task extends SkinnyCRUDMapper[Task] {
   override def extract(rs: WrappedResultSet, n: ResultName[Task]): Task = autoConstruct(rs, n)
 
   private def toNamedValues(record: Task): Seq[(Symbol, Any)] = Seq(
+    'status -> record.status,
     'subject -> record.subject,
     'supporter -> record.supporter,
     'content -> record.content,

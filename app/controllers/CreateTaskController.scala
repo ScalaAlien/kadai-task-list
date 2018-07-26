@@ -1,10 +1,10 @@
 package controllers
 
 import java.time.ZonedDateTime
-import javax.inject._
 
+import javax.inject._
 import models.Task
-import play.api.i18n.{ I18nSupport, Messages }
+import play.api.i18n.{I18nSupport, Messages}
 import play.api.mvc._
 import scalikejdbc.AutoSession
 
@@ -25,9 +25,9 @@ class CreateTaskController @Inject()(components: ControllerComponents)
       .fold(
         formWithErrors => BadRequest(views.html.create(formWithErrors)), { model =>
           implicit val session = AutoSession
-          val now              = ZonedDateTime.now()
-          val task          = Task(None, model.subject,model.supporter,model.content, now, now)
-          val result           = Task.create(task)
+          val now = ZonedDateTime.now()
+          val task = Task(None, Some(model.status), model.subject, model.supporter, model.content, now, now)
+          val result = Task.create(task)
           if (result > 0) {
             Redirect(routes.GetTasksController.index())
           } else {
